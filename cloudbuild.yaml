@@ -8,14 +8,8 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args:
   - 'build'
-  - '--build-arg=MAVEN_VERSION=3.3.9-jdk-8'
-  - '--tag=gcr.io/$PROJECT_ID/mvn:3.3.9-jdk-8'
-  - '.'
-- name: 'gcr.io/cloud-builders/docker'
-  args:
-  - 'build'
-  - '--build-arg=MAVEN_VERSION=3.5.0-jdk-8'
-  - '--tag=gcr.io/$PROJECT_ID/mvn:3.5.0-jdk-8'
+  - '--build-arg=MAVEN_VERSION=4.0.0-jdk-8'
+  - '--tag=gcr.io/$PROJECT_ID/mvn:4.0.0-jdk-8'
   - '.'
 
 # Build the latest version.
@@ -30,10 +24,10 @@ steps:
   args: ['--version']
 
 # Run example builds.
-- name: 'gcr.io/$PROJECT_ID/mvn:3.3.9-jdk-8'
+- name: 'gcr.io/$PROJECT_ID/mvn:4.0.0-jdk-8'
   args: ['install']
   dir: 'examples/spring_boot'
-- name: 'gcr.io/$PROJECT_ID/mvn:3.5.0-jdk-8'
+- name: 'gcr.io/$PROJECT_ID/mvn:4.0.0-jdk-8'
   args: ['install']
   dir: 'examples/spring_boot'
 - name: 'gcr.io/$PROJECT_ID/mvn'
@@ -46,6 +40,6 @@ steps:
   dir: 'examples/spring_boot'
 
 images:
-- 'gcr.io/$PROJECT_ID/mvn:3.3.9-jdk-8'
-- 'gcr.io/$PROJECT_ID/mvn:3.5.0-jdk-8'
+- 'gcr.io/$PROJECT_ID/mvn:4.0.0-jdk-8'
+- 'gcr.io/$PROJECT_ID/mvn:4.0.0-jdk-8'
 - 'gcr.io/$PROJECT_ID/mvn'
